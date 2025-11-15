@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Truster – Compra Segura Online</title>
-  <meta name="description" content="Compra lo que quieras con total seguridad. En Truster realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
+  <title>TrusterPack</title>
+  <meta name="description" content="Compra online con total seguridad. En TrusterPack realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,29 +14,47 @@
 
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
+      --primary: #3b82f6;
+      --primary-soft: rgba(59, 130, 246, 0.08);
+      --primary-dark: #2563eb;
+
       --secondary: #10b981;
-      --dark: #1f2937;
-      --light: #f9fafb;
-      --gray: #6b7280;
-      --gray-light: #e5e7eb;
-      --white: #ffffff;
-      --radius: 8px;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+      --accent: #f97316;
+      --bg: #050816;
+      --bg-soft: #0f172a;
+      --surface: #0b1220;
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.75);
+      --nav-height: 72px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--white);
-      color: var(--dark);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
+      color: var(--text-main);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -46,109 +64,521 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
-      background: white;
+      height: var(--nav-height);
       position: sticky;
       top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.55));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .nav-left { font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+    .nav-left {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #e5e7eb;
+    }
 
-    .nav-right { display: flex; gap: 25px; }
+    .nav-left::before {
+      content: "";
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #f97316 0, #facc15 35%, #22c55e 70%, #0ea5e9 100%);
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.9);
+    }
 
-    .nav-right a:hover { color: var(--primary); }
+    .nav-right {
+      display: flex;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-right a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-right a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #38bdf8, #6366f1);
+      transition: width 0.25s ease;
+    }
+
+    .nav-right a:hover::after {
+      width: 100%;
+    }
+
+    .btn-nav {
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 55%);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.65);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--text-main);
+      cursor: pointer;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .menu-toggle i {
+      font-size: 1.1rem;
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .nav-mobile a {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(30, 64, 175, 0.35);
+    }
 
     /* HERO */
     .hero {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
       align-items: center;
-      gap: 40px;
-      padding: 100px 0;
+      gap: 46px;
+      padding: 72px 0 40px;
     }
 
-    .hero-content h1 { font-size: 3rem; margin-bottom: 15px; }
-    .hero-content p { font-size: 1.2rem; margin-bottom: 20px; }
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-content p {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 26px;
+    }
 
     .hero-btn {
-      background: var(--primary);
-      color: white;
-      padding: 14px 30px;
-      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: radial-gradient(circle at top left, #4f46e5, #2563eb 45%, #0ea5e9 100%);
+      color: #f9fafb;
+      padding: 14px 28px;
+      border-radius: 999px;
       font-weight: 600;
-      display: inline-block;
+      font-size: 0.98rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.25), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .hero-btn:hover::after {
+      opacity: 1;
     }
 
     .hero-img img {
       width: 100%;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(0);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+    }
+
+    .hero-img img:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+      border-color: rgba(129, 140, 248, 0.9);
     }
 
     /* SECTIONS */
-    section { padding: 80px 0; }
+    section {
+      padding: 70px 0;
+    }
 
     .section-title {
       text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+      font-size: 1.9rem;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
     }
 
-    .steps { display: flex; gap: 25px; }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .feature {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.94));
+      padding: 28px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .feature h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .feature p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* STEPS */
+    .steps {
+      display: flex;
+      gap: 28px;
+      margin-top: 44px;
+    }
 
     .step {
       flex: 1;
-      background: var(--light);
-      padding: 25px;
-      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.94));
+      padding: 28px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
       text-align: center;
-      box-shadow: var(--shadow);
+      position: relative;
     }
 
-    /* FORM */
+    .step-number {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .step h3 {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* FORM CARDS */
     .form-card {
-      background: white;
-      padding: 25px;
-      border-radius: var(--radius);
-      margin-bottom: 25px;
-      box-shadow: var(--shadow);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.93));
+      padding: 30px 26px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 26px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
     }
 
-    input, textarea {
+    .form-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    input,
+    textarea {
       width: 100%;
-      padding: 12px;
-      margin-top: 5px;
-      border: 1px solid var(--gray-light);
-      border-radius: var(--radius);
+      margin-top: 6px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.7);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.85);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
     }
 
     .btn-primary {
       width: 100%;
-      padding: 15px;
-      background: var(--primary);
-      border-radius: var(--radius);
-      color: white;
+      padding: 14px 16px;
+      margin-top: 4px;
+      background: radial-gradient(circle at top left, #22c55e, #16a34a 35%, #15803d 100%);
+      border-radius: 999px;
+      color: #f9fafb;
       font-weight: 600;
+      font-size: 0.96rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 16px 40px rgba(21, 128, 61, 0.6);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 44px rgba(21, 128, 61, 0.75);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 24px rgba(21, 128, 61, 0.6);
     }
 
     .message {
-      margin-top: 20px;
-      padding: 12px;
-      border-radius: var(--radius);
+      margin-top: 16px;
+      padding: 11px 12px;
+      border-radius: 999px;
       text-align: center;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
     }
 
-    .success { background: rgba(16,185,129,0.15); color: var(--secondary); }
-    .error { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .success {
+      background: rgba(22, 163, 74, 0.18);
+      border-color: rgba(34, 197, 94, 0.55);
+      color: #bbf7d0;
+    }
 
-    footer {
-      background: var(--dark);
+    .error {
+      background: rgba(220, 38, 38, 0.16);
+      border-color: rgba(248, 113, 113, 0.6);
+      color: #fecaca;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .testimonial {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(15, 23, 42, 0.94));
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .testimonial-content {
+      margin-bottom: 16px;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
       color: white;
+    }
+
+    .testimonial-info h4 {
+      font-size: 0.95rem;
+    }
+
+    .testimonial-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    footer {
+      background: transparent;
+      color: var(--text-muted);
       text-align: center;
-      padding: 30px 0;
-      margin-top: 50px;
+      padding: 32px 0 30px;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      margin-top: 40px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .navbar {
+        flex-wrap: wrap;
+        row-gap: 8px;
+        padding-inline: 12px;
+        height: auto;
+      }
+
+      .nav-right {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-mobile {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 48px;
+        gap: 32px;
+      }
+
+      .hero-img {
+        order: -1;
+      }
+
+      .steps {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .navbar {
+        padding-inline: 16px;
+        gap: 8px;
+      }
+
+      .nav-left {
+        font-size: 1.3rem;
+      }
+
+      .nav-right {
+        gap: 10px;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding: 56px 0 28px;
+        gap: 24px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 0.95rem;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .form-card {
+        padding-inline: 18px;
+      }
     }
   </style>
 </head>
@@ -157,40 +587,139 @@
 
   <!-- NAVBAR -->
   <header class="navbar container">
-    <div class="nav-left">Truster</div>
-    <nav class="nav-right">
+    <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:12px;">
+      <div class="nav-left">TrusterPack</div>
+      <button id="menuToggle" class="menu-toggle">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+      </button>
+      <nav class="nav-right">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#consulta-pedido">Buscar pedido</a>
+        <a href="#pedido" class="btn-nav">Hacer pedido</a>
+      </nav>
+    </div>
+    <nav id="mobileNav" class="nav-mobile">
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#ventajas">Ventajas</a>
-      <a href="#pedido" class="btn-nav">Hacer Pedido</a>
+      <a href="#consulta-pedido">Buscar pedido</a>
+      <a href="#pedido">Hacer pedido</a>
     </nav>
   </header>
 
   <!-- HERO -->
   <section class="hero container">
     <div class="hero-content">
-      <h1>Compra lo que quieras. Con total seguridad.</h1>
-      <p>Nosotros compramos por ti, verificamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.</p>
-      <a href="#pedido" class="hero-btn">Hacer un pedido</a>
+      <h1>Envíos y compras online, sin preocupaciones.</h1>
+      <p>En TrusterPack verificamos la tienda, gestionamos el envío y protegemos tu dinero hasta que todo está correcto.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        <a href="#pedido" class="hero-btn">Hacer un pedido</a>
+        <a href="#consulta-pedido" class="hero-btn" style="background:rgba(15,23,42,0.6); box-shadow:none; border:1px solid rgba(148,163,184,0.7);">Buscar pedido</a>
+      </div>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80">
+      <img src="https://images.unsplash.com/photo-1606146485454-130d5c94b9d8?auto=format&fit=crop&w=1600&q=80" alt="Paquetes y envíos seguros">
+    </div>
+  </section>
+
+  <!-- VENTAJAS -->
+  <section class="container" id="ventajas">
+    <h2 class="section-title">¿Por qué confiar en TrusterPack?</h2>
+    <p class="section-subtitle">Ofrecemos un servicio completo que elimina los riesgos de comprar online</p>
+    
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Verificación de tiendas</h3>
+        <p>Analizamos la reputación y fiabilidad de cada tienda antes de realizar cualquier compra.</p>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>Inspección de productos</h3>
+        <p>Comprobamos que el producto recibido coincide exactamente con lo que has solicitado.</p>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3>Pago seguro</h3>
+        <p>Solo pagas cuando confirmamos que todo está correcto. Tu dinero está protegido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="container" id="como-funciona">
+    <h2 class="section-title">¿Cómo funciona?</h2>
+    <p class="section-subtitle">Solo necesitas seguir estos 4 sencillos pasos</p>
+    
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Solicita tu compra</h3>
+        <p>Completa el formulario con los datos del producto que deseas y tu información de contacto.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Verificamos la tienda</h3>
+        <p>Analizamos la reputación de la tienda y confirmamos la disponibilidad del producto.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Gestionamos la compra</h3>
+        <p>Realizamos la compra por ti y seguimos todo el proceso de envío hasta que llega a nuestras instalaciones.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Recibes tu producto</h3>
+        <p>Te enviamos el producto verificando que todo está correcto. Solo entonces realizas el pago.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTAR PEDIDO POR ID -->
+  <section class="container" id="consulta-pedido">
+    <h2 class="section-title">Consulta tu pedido</h2>
+    <p class="section-subtitle">Introduce tu ID de pedido para verificar su estado actual</p>
+
+    <div class="form-card">
+      <h3><i class="fas fa-search"></i> Buscar pedido</h3>
+      <label>
+        ID de pedido
+        <input id="orderIdLookup" type="text" placeholder="Ej: 1234567890">
+      </label>
+
+      <button id="lookupButton" class="btn-primary" type="button">Buscar pedido</button>
+
+      <p id="lookupMessage" class="message"></p>
     </div>
   </section>
 
   <!-- FORMULARIO -->
   <section class="container" id="pedido">
     <h2 class="section-title">Haz tu pedido</h2>
+    <p class="section-subtitle">Completa la información necesaria para que podamos ayudarte con tu compra</p>
 
     <form id="orderForm">
 
       <div class="form-card">
-        <h3>Producto</h3>
+        <h3><i class="fas fa-box"></i> Producto</h3>
         <label>URL del producto *<input name="productUrl" type="url" required></label>
-        <label>Información extra<textarea name="extraInfo"></textarea></label>
+        <label>Información extra<textarea name="extraInfo" placeholder="Talla, color, modelo, especificaciones técnicas..."></textarea></label>
       </div>
 
       <div class="form-card">
-        <h3>Tus datos</h3>
+        <h3><i class="fas fa-user"></i> Tus datos</h3>
         <label>Nombre y apellidos *<input name="fullName" required></label>
         <label>DNI<input name="dni"></label>
         <label>Email *<input name="email" type="email" required></label>
@@ -198,17 +727,17 @@
       </div>
 
       <div class="form-card">
-        <h3>Dirección</h3>
+        <h3><i class="fas fa-home"></i> Dirección</h3>
         <label>Dirección *<input name="addressLine1" required></label>
-        <label>Info adicional<input name="addressLine2"></label>
+        <label>Info adicional<input name="addressLine2" placeholder="Piso, puerta, etc."></label>
         <label>Ciudad *<input name="city" required></label>
         <label>Código postal *<input name="postalCode" required></label>
         <label>Provincia<input name="province"></label>
       </div>
 
       <div class="form-card">
-        <h3>Notas adicionales</h3>
-        <textarea name="notes"></textarea>
+        <h3><i class="fas fa-sticky-note"></i> Notas adicionales</h3>
+        <textarea name="notes" placeholder="Información adicional que consideres relevante para tu pedido..."></textarea>
       </div>
 
       <button class="btn-primary" type="submit">Enviar solicitud</button>
@@ -219,7 +748,7 @@
   </section>
 
   <footer>
-    © 2025 Truster – Compra segura online.
+    &copy; 2025 TrusterPack – Envíos y compras seguras.
   </footer>
 
   <!-- JS REAL -->
@@ -256,6 +785,61 @@
         msg.className = "message error";
       }
     });
+
+    // Consulta de pedido por ID
+    const lookupInput = document.getElementById("orderIdLookup");
+    const lookupButton = document.getElementById("lookupButton");
+    const lookupMessage = document.getElementById("lookupMessage");
+
+    if (lookupButton && lookupInput && lookupMessage) {
+      lookupButton.addEventListener("click", async () => {
+        const id = (lookupInput.value || "").trim();
+
+        lookupMessage.className = "message";
+
+        if (!id) {
+          lookupMessage.textContent = "Introduce un ID de pedido.";
+          lookupMessage.classList.add("error");
+          return;
+        }
+
+        lookupMessage.textContent = "Buscando...";
+
+        try {
+          const res = await fetch(`${API_URL}/${id}`);
+          const data = await res.json();
+
+          if (!res.ok || !data.ok) {
+            throw new Error(data.message || "Pedido no encontrado.");
+          }
+
+          const order = data.order;
+          lookupMessage.textContent = `Pedido encontrado: #${order.orderId} a nombre de ${order.fullName}.`;
+          lookupMessage.classList.add("success");
+        } catch (err) {
+          lookupMessage.textContent = "Error: " + (err.message || "No se ha encontrado ningún pedido con esa ID.");
+          lookupMessage.classList.add("error");
+        }
+      });
+    }
+
+    // Menú móvil (hamburguesa)
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    if (menuToggle && mobileNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mobileNav.style.display === "flex";
+        mobileNav.style.display = isOpen ? "none" : "flex";
+      });
+
+      // Cerrar menú móvil al hacer clic en un enlace
+      mobileNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileNav.style.display = "none";
+        });
+      });
+    }
   </script>
 
 </body>

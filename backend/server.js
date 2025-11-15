@@ -137,6 +137,35 @@ app.post("/api/orders", async (req, res) => {
   }
 });
 
+/* ------------------------ API: OBTENER PEDIDO POR ID ------------------------ */
+app.get("/api/orders/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const doc = await db.collection("orders").doc(id.toString()).get();
+
+    if (!doc.exists) {
+      return res.status(404).json({
+        ok: false,
+        message: "Pedido no encontrado",
+      });
+    }
+
+    const order = doc.data();
+
+    return res.json({
+      ok: true,
+      order,
+    });
+  } catch (err) {
+    console.error("ERROR OBTENIENDO PEDIDO:", err);
+    return res.status(500).json({
+      ok: false,
+      message: "Error al obtener el pedido",
+    });
+  }
+});
+
 /* ------------------------ API: LISTAR PEDIDOS ------------------------ */
 app.get("/api/orders", async (req, res) => {
   try {
