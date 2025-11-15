@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Truster – Compra Segura Online</title>
+  <meta name="description" content="Compra lo que quieras con total seguridad. En Truster realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar container">
+    <div class="nav-left">Truster</div>
+    <nav class="nav-right">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#ventajas">Ventajas</a>
+      <a href="#pedido" class="btn-nav">Hacer Pedido</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero container">
+    <div class="hero-content">
+      <h1>Compra lo que quieras. Con total seguridad.</h1>
+      <p>En Truster realizamos la compra por ti, comprobamos la tienda, gestionamos el envío, y tú solo pagas cuando confirmamos todo.</p>
+      <a href="#pedido" class="hero-btn">Hacer un pedido</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80" alt="Compra segura" />
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section container" id="como-funciona">
+    <h2 class="section-title">¿Cómo funciona?</h2>
+    <div class="steps">
+      <div class="step"><span class="step-number">1</span><h3>Envíanos el producto</h3><p>Pegas la URL del producto y tus datos.</p></div>
+      <div class="step"><span class="step-number">2</span><h3>Presupuesto</h3><p>Te enviamos el precio final y un enlace seguro de pago.</p></div>
+      <div class="step"><span class="step-number">3</span><h3>Pagas y enviamos</h3><p>Realizamos la compra y gestionamos el envío.</p></div>
+    </div>
+  </section>
+
+  <!-- VENTAJAS -->
+  <section class="section bg-light" id="ventajas">
+    <div class="container">
+      <h2 class="section-title">Ventajas de usar Truster</h2>
+      <div class="grid-3">
+        <div class="card-adv"><h3><i class="fas fa-shield-alt"></i> Evita timos</h3><p>Compramos solo en tiendas fiables.</p></div>
+        <div class="card-adv"><h3><i class="fas fa-clock"></i> Sin complicaciones</h3><p>Nosotros gestionamos TODO.</p></div>
+        <div class="card-adv"><h3><i class="fas fa-lock"></i> Pago seguro</h3><p>No pagas hasta que confirmamos tu pedido.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="section container" id="pedido">
+    <h2 class="section-title">Haz tu pedido</h2>
+    <p class="section-subtitle">Rellena este formulario y te responderemos por email.</p>
+
+    <form id="orderForm" class="form">
+      <div class="form-card">
+        <h3>Producto</h3>
+        <label>URL del producto *<input type="url" name="productUrl" required></label>
+        <label>Información extra<textarea name="extraInfo"></textarea></label>
+      </div>
+
+      <div class="form-card">
+        <h3>Tus datos</h3>
+        <label>Nombre y apellidos *<input type="text" name="fullName" required></label>
+        <label>DNI<input type="text" name="dni"></label>
+        <label>Email *<input type="email" name="email" required></label>
+        <label>Teléfono<input type="tel" name="phone"></label>
+      </div>
+
+      <div class="form-card">
+        <h3>Dirección</h3>
+        <label>Dirección *<input type="text" name="addressLine1" required></label>
+        <label>Info adicional<input type="text" name="addressLine2"></label>
+        <label>Ciudad *<input type="text" name="city" required></label>
+        <label>Código postal *<input type="text" name="postalCode" required></label>
+        <label>Provincia<input type="text" name="province"></label>
+      </div>
+
+      <div class="form-card">
+        <h3>Notas adicionales</h3>
+        <textarea name="notes"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+      <p id="message" class="message"></p>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><p>© 2025 Truster – Compra segura online.</p></div></footer>
+
+  <!-- JS REAL -->
+  <script src="main.js?v=1"></script>
+</body>
+</html>
