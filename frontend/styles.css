@@ -126,8 +126,6 @@ img {
   margin-bottom: 1.5rem;
   line-height: 1.2;
   background: linear-gradient(90deg, var(--dark), var(--primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {

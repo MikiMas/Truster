@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>TrusterPack</title>
-  <meta name="description" content="Compra online con total seguridad. En TrusterPack realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
+  <title>SecurePack</title>
+  <meta name="description" content="Compra online con total seguridad. En SecurePack realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,8 +63,9 @@
     .navbar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      height: var(--nav-height);
+      align-items:center;
+      height: 88px;
+      padding: 0;
       position: sticky;
       top: 0;
       z-index: 40;
@@ -504,6 +505,7 @@
         flex-wrap: wrap;
         row-gap: 8px;
         padding-inline: 12px;
+        padding-block: 10px;
         height: auto;
       }
 
@@ -523,10 +525,21 @@
         grid-template-columns: minmax(0, 1fr);
         padding-top: 48px;
         gap: 32px;
+        text-align: center;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin: 0 auto 26px;
       }
 
       .hero-img {
         order: -1;
+        max-width: 360px;
+        margin: 0 auto;
       }
 
       .steps {
@@ -540,7 +553,7 @@
       }
 
       .navbar {
-        padding-inline: 16px;
+        padding-inline: 10px;
         gap: 8px;
       }
 
@@ -556,7 +569,7 @@
       }
 
       .hero {
-        padding: 56px 0 28px;
+        padding: 40px 0 28px;
         gap: 24px;
       }
 
@@ -586,21 +599,22 @@
 <body>
 
   <!-- NAVBAR -->
-  <header class="navbar container">
-    <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:12px;">
-      <div class="nav-left">TrusterPack</div>
+  <header class="navbar">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:12px;">
+      <div class="nav-left">SecurePack</div>
       <button id="menuToggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
         <span>Menú</span>
       </button>
+
       <nav class="nav-right">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#ventajas">Ventajas</a>
         <a href="#consulta-pedido">Buscar pedido</a>
-        <a href="#pedido" class="btn-nav">Hacer pedido</a>
+        <a href="#pedido" style="padding: 5px 20px;" class="btn-nav">Hacer pedido</a>
       </nav>
     </div>
-    <nav id="mobileNav" class="nav-mobile">
+    <nav id="mobileNav" class="nav-mobile container">
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#ventajas">Ventajas</a>
       <a href="#consulta-pedido">Buscar pedido</a>
@@ -612,46 +626,14 @@
   <section class="hero container">
     <div class="hero-content">
       <h1>Envíos y compras online, sin preocupaciones.</h1>
-      <p>En TrusterPack verificamos la tienda, gestionamos el envío y protegemos tu dinero hasta que todo está correcto.</p>
-      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+      <p>En SecurePack verificamos la tienda, gestionamos el envío y protegemos tu dinero hasta que todo está correcto.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
         <a href="#pedido" class="hero-btn">Hacer un pedido</a>
         <a href="#consulta-pedido" class="hero-btn" style="background:rgba(15,23,42,0.6); box-shadow:none; border:1px solid rgba(148,163,184,0.7);">Buscar pedido</a>
       </div>
     </div>
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1606146485454-130d5c94b9d8?auto=format&fit=crop&w=1600&q=80" alt="Paquetes y envíos seguros">
-    </div>
-  </section>
-
-  <!-- VENTAJAS -->
-  <section class="container" id="ventajas">
-    <h2 class="section-title">¿Por qué confiar en TrusterPack?</h2>
-    <p class="section-subtitle">Ofrecemos un servicio completo que elimina los riesgos de comprar online</p>
-    
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">
-          <i class="fas fa-shield-alt"></i>
-        </div>
-        <h3>Verificación de tiendas</h3>
-        <p>Analizamos la reputación y fiabilidad de cada tienda antes de realizar cualquier compra.</p>
-      </div>
-      
-      <div class="feature">
-        <div class="feature-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <h3>Inspección de productos</h3>
-        <p>Comprobamos que el producto recibido coincide exactamente con lo que has solicitado.</p>
-      </div>
-      
-      <div class="feature">
-        <div class="feature-icon">
-          <i class="fas fa-lock"></i>
-        </div>
-        <h3>Pago seguro</h3>
-        <p>Solo pagas cuando confirmamos que todo está correcto. Tu dinero está protegido.</p>
-      </div>
+      <img src="/ecommerce-3415340_1280.jpg" alt="Paquetes y envíos seguros">
     </div>
   </section>
 
@@ -748,7 +730,7 @@
   </section>
 
   <footer>
-    &copy; 2025 TrusterPack – Envíos y compras seguras.
+    &copy; 2025 SecurePack – Envíos y compras seguras.
   </footer>
 
   <!-- JS REAL -->
