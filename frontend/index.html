@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>SecurePack</title>
-  <meta name="description" content="Compra online con total seguridad. En SecurePack realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
+  <title>Vakant</title>
+  <meta name="description" content="Compra online con total seguridad. En Vakant realizamos la compra por ti, comprobamos la tienda, gestionamos el envío y tú solo pagas cuando confirmamos todo.">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,13 +84,11 @@
       color: #e5e7eb;
     }
 
-    .nav-left::before {
-      content: "";
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #f97316 0, #facc15 35%, #22c55e 70%, #0ea5e9 100%);
-      box-shadow: 0 0 26px rgba(56, 189, 248, 0.9);
+    .nav-left img {
+      height: 32px;
+      width: auto;
+      display: block;
+      border-radius: 50%;
     }
 
     .nav-right {
@@ -601,7 +599,10 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="container" style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:12px;">
-      <div class="nav-left">SecurePack</div>
+      <div class="nav-left">
+        <img src="/vakant.png" alt="Logo Vakant">
+        <span>Vakant</span>
+      </div>
       <button id="menuToggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
         <span>Menú</span>
@@ -735,7 +736,7 @@
   </section>
 
   <footer>
-    &copy; 2025 SecurePack – Envíos y compras seguras.
+    &copy; 2025 Vakant – Envíos y compras seguras.
   </footer>
 
   <!-- JS REAL -->
