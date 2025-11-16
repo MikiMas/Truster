@@ -611,7 +611,7 @@
       <nav class="nav-right">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#ventajas">Ventajas</a>
-        <a href="#consulta-pedido">Buscar pedido</a>
+        <!--<a href="#consulta-pedido">Buscar pedido</a>-->
         <a href="#pedido" style="padding: 5px 20px;" class="btn-nav">Hacer pedido</a>
       </nav>
     </div>
@@ -623,20 +623,32 @@
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero container">
-    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;" class="hero-content">
-      <h1 style="text-align:center;">Gestionamos tus compras online</h1>
-      <p>Si no te fías, no te arriesgues.</p>
-      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
-        <a href="#pedido" class="hero-btn">Hacer un pedido</a>
-        <a href="#consulta-pedido" class="hero-btn" style="background:rgba(15,23,42,0.6); box-shadow:none; border:1px solid rgba(148,163,184,0.7);">Buscar pedido</a>
-      </div>
-    </div>
-    <div class="hero-img">
-      <img src="/ecommerce-3415340_1280.jpg" alt="Paquetes y envíos seguros">
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero container">
+  <div style="display:flex; flex-direction:column; gap:12px; justify-content:center; align-items:center;" class="hero-content">
+    
+    <h1 style="text-align:center;">Gestionamos tus compras online</h1>
+    <p>Si no te fías, no te arriesgues.</p>
+
+    <!-- Botón principal abajo -->
+    <a href="#pedido" class="hero-btn">Hacer un pedido</a>
+
+    <!--
+    <a href="#consulta-pedido" class="hero-btn" 
+       style="background:rgba(15,23,42,0.6); 
+              box-shadow:none; 
+              border:1px solid rgba(148,163,184,0.7);">
+      Buscar pedido
+    </a>
+    -->
+    
+  </div>
+
+  <div class="hero-img">
+    <img src="/ecommerce-3415340_1280.jpg" alt="Paquetes y envíos seguros">
+  </div>
+</section>
+
 
   <!-- CÓMO FUNCIONA -->
   <section class="container" id="como-funciona">
@@ -672,7 +684,7 @@
 
 <div style="margin-bottom: 100px;"></div>
 
-  <!-- CONSULTAR PEDIDO POR ID -->
+  <!-- CONSULTAR PEDIDO POR ID 
   <section class="container" id="consulta-pedido">
     <h2 class="section-title">Consulta tu pedido</h2>
     <p class="section-subtitle">Introduce tu ID de pedido para verificar su estado actual</p>
@@ -692,6 +704,7 @@
 
   <div style="margin-bottom: 100px;"></div>
 
+  -->
   <!-- FORMULARIO -->
   <section class="container" id="pedido">
     <h2 class="section-title">Haz tu pedido</h2>
@@ -764,9 +777,11 @@
 
         if (!res.ok || !data.ok) throw new Error(data.message);
 
-        msg.textContent = "Solicitud enviada correctamente. Te contactaremos pronto.";
+        msg.textContent = "Solicitud enviada correctamente. Estuadiremos tu solicitud y te contactaremos en breve.";
         msg.className = "message success";
         e.target.reset();
+
+        alert("¡Solicitud enviada! ¡Te contactaremos en breve!");
 
       } catch (err) {
         msg.textContent = "Error: " + err.message;

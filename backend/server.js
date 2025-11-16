@@ -71,11 +71,11 @@ async function sendOrderEmail(order) {
       Messages: [
         {
           From: {
-            Email: "mikimas.business@gmail.com",
-            Name: "Truster",
+            Email: "vakant.contacto@gmail.com",
+            Name: "Vakant",
           },
           To: [{ Email: process.env.EMAIL_RECEIVER }],
-          Subject: `Nuevo pedido (#${order.orderId})`,
+          Subject: `Nueva solicitud de compra.`,
           HTMLPart: html,
         },
       ],
