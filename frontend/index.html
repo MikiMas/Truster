@@ -843,6 +843,14 @@
         });
       });
     }
+
+    // Petición de calentamiento al cargar la página para despertar el backend
+    window.addEventListener("load", () => {
+      // Usamos la raíz del backend; si falla, simplemente lo ignoramos
+      fetch("https://truster-24lr.onrender.com/", { method: "GET" }).catch(() => {
+        // Error silencioso, solo intentamos despertarlo
+      });
+    });
   </script>
 
 </body>
